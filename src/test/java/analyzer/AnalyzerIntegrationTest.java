@@ -205,4 +205,19 @@ class AnalyzerIntegrationTest {
 
         Approvals.verify(serialize(output.analysis()), Approvals.NAMES.withParameters(scenario));
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "ExemplarSolution",
+            "UseOptionals",
+            "UseStringFormat",
+            "UseOptionalsAndStringFormat",
+    })
+    void timfrommarketing(String scenario) throws IOException {
+        var path = Path.of("tim-from-marketing", scenario + ".java");
+        var solution = new SolutionFromFiles("tim-from-marketing", SCENARIOS.resolve(path));
+        var output = AnalyzerRoot.analyze(solution);
+
+        Approvals.verify(serialize(output.analysis()), Approvals.NAMES.withParameters(scenario));
+    }
 }

@@ -13,7 +13,6 @@ import analyzer.exercises.secrets.SecretsAnalyzer;
 import analyzer.exercises.timfrommarketing.TimFromMarketingAnalyzer;
 import analyzer.exercises.twofer.TwoferAnalyzer;
 import analyzer.exercises.wizardsandwarriors.WizardsAndWarriorsAnalyzer;
-
 import java.util.ArrayList;
 import java.util.List;
 
