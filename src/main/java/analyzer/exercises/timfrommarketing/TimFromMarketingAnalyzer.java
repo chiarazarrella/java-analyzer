@@ -16,6 +16,7 @@ public class TimFromMarketingAnalyzer extends VoidVisitorAdapter<OutputCollector
 
     private static final String EXERCISE_NAME = "Tim from Marketing";
     private static final String FORMAT = "format";
+    private static final String OPTIONAL = "Optional";
 
     @Override
     public void analyze(Solution solution, OutputCollector output) {
@@ -33,24 +34,25 @@ public class TimFromMarketingAnalyzer extends VoidVisitorAdapter<OutputCollector
     @Override
     public void visit(MethodDeclaration node, OutputCollector output) {
 
-        if(useOptionals()){
+        if(useOptionals(node)){
             output.addComment(new UseNullLiteral());
         }
 
-        if(useFormat(node)) {
+        if(useStringFormat(node)) {
             output.addComment(new PreferStringConcatenation());
         }
-
 
         super.visit(node, output);
     }
 
-    private static boolean useFormat(MethodDeclaration node) {
+    private static boolean useStringFormat(MethodDeclaration node) {
         return node.findAll(MethodCallExpr.class).stream()
                 .anyMatch(m -> m.getNameAsString().contains(FORMAT));
     }
 
-    private static boolean useOptionals(){
-        return false;
+
+    private static boolean useOptionals(MethodDeclaration node) {
+        return node.findAll(MethodCallExpr.class).stream()
+                .anyMatch(m -> m.toString().contains(OPTIONAL));
     }
 }
