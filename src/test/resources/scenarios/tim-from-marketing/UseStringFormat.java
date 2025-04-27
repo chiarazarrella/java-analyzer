@@ -1,13 +1,15 @@
 public class Badge {
-
     public String print(Integer id, String name, String department) {
-        String worksAt = department == null ? "OWNER" : department.toUpperCase();
-
-        if (id == null) {
-            return String.format("%s - %s", name, worksAt);
+        if (department == null) {
+            department = "OWNER";
+        } else {
+            department = department.toUpperCase();
         }
 
-        return String.format("[%d] - %s - %s", id, name, worksAt);
+        if (id == null) {
+            return String.format("%s - %s", name, department);
+        } else {
+            return String.format("[%d] - %s - %s", id, name, department);
+        }
     }
-
 }

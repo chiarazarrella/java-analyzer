@@ -1,15 +1,11 @@
 public class Badge {
-
     public String print(Integer id, String name, String department) {
-        Optional<Integer> idOpt = Optional.ofNullable(id);
-        Optional<String> departmentOpt = Optional.ofNullable(department);
+        Optional<Integer> optionalId = Optional.ofNullable(id);
+        Optional<String> optionalDepartment = Optional.ofNullable(department);
 
-        String worksAt = departmentOpt
-                .map(String::toUpperCase)
-                .orElse("OWNER");
+        String idPart = optionalId.map(i -> String.format("[%d] - ", i)).orElse("");
+        String departmentPart = optionalDepartment.orElse("OWNER").toUpperCase();
 
-        return idOpt
-                .map(val -> String.format("[%d] - %s - %s", val, name, worksAt))
-                .orElse(String.format("%s - %s", name, worksAt));
+        return String.format("%s%s - %s", idPart, name, departmentPart);
     }
 }

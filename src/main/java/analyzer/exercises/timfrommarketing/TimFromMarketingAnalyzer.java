@@ -9,9 +9,6 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
-/**
- * author: chiarazarrella
- */
 public class TimFromMarketingAnalyzer extends VoidVisitorAdapter<OutputCollector> implements Analyzer {
 
     private static final String EXERCISE_NAME = "Tim from Marketing";

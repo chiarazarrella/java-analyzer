@@ -2,9 +2,7 @@ package analyzer.exercises.timfrommarketing;
 
 import analyzer.Comment;
 
-/**
- * author: chiarazarrella
- */
+
 public class UseNullLiteral extends Comment {
 
     @Override
